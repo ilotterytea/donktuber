@@ -30,7 +30,9 @@ if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
 
                 const decibels = 20 * Math.log10(volume / 255);
                 
-                volumeHtml.innerText = `${decibels.toFixed(2)} dB`;
+                if (volumeHtml) {
+                    volumeHtml.innerText = `${decibels.toFixed(2)} dB`;
+                }
 
                 const muted = localStorage.getItem("muted_img");
                 const speak = localStorage.getItem("speak_img");
