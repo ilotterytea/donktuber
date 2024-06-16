@@ -34,9 +34,10 @@ if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
                     volumeHtml.innerText = `${decibels.toFixed(2)} dB`;
                 }
 
-                const muted = localStorage.getItem("muted_img");
-                const speak = localStorage.getItem("speak_img");
-                const silence_db = localStorage.getItem("silence_db");
+                const params = new URLSearchParams(window.location.search);
+                const muted = localStorage.getItem("muted_img") || params.get("muted_img");
+                const speak = localStorage.getItem("speak_img") || params.get("speak_img");
+                const silence_db = localStorage.getItem("silence_db") || params.get("silence_db");
 
                 if (muted && previewHtml.src != muted && decibels <= silence_db) {
                     previewHtml.src = muted;
