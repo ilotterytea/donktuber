@@ -82,3 +82,9 @@ html {
 .preview img {
     max-width: 100%;
 }
+
+.fork {
+    position: absolute;
+    right: 0;
+    top: 0;
+}
