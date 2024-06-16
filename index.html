@@ -1,46 +1,56 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>donktuber</title>
-        <link rel="shortcut icon" href="assets/logo.gif" type="image/x-icon">
-        <link rel="stylesheet" href="style.css">
-    </head>
-    <body>
-        <div class="container">
-            <div class="wrapper">
-                <div class="brand">
-                    <img src="assets/logo.gif" alt="">
-                    <h1>donktuber</h1>
+
+<head>
+    <title>donktuber</title>
+    <link rel="shortcut icon" href="assets/logo.gif" type="image/x-icon">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="fork">
+        <a href="https://github.com/ilotterytea/donktuber">
+            <img decoding="async" width="149" height="149"
+                src="https://github.blog/wp-content/uploads/2008/12/forkme_right_darkblue_121621.png?resize=149%2C149"
+                class="attachment-full size-full" alt="Fork me on GitHub" loading="lazy" data-recalc-dims="1">
+        </a>
+    </div>
+    <div class="container">
+        <div class="wrapper">
+            <div class="brand">
+                <img src="assets/logo.gif" alt="">
+                <h1>donktuber</h1>
+            </div>
+            <div class="preview-container">
+                <h2>preview</h2>
+                <div class="preview">
+                    <h1>
+                        <img src="#" alt="no image" id="preview">
+                    </h1>
                 </div>
-                <div class="preview-container">
-                    <h2>preview</h2>
-                    <div class="preview">
-                        <h1>
-                            <img src="#" alt="no image" id="preview">
-                        </h1>
+                <div class="control-container">
+                    <div>
+                        <p id="volume">0 dB</p>
                     </div>
-                    <div class="control-container">
-                        <div>
-                            <p id="volume">0 dB</p>
-                        </div>
-                        <div class="control">
-                            <a href="show.html" class="button">show in a separate tab</a>
-                        </div>
+                    <div class="control">
+                        <a href="show.html" class="button">show in a separate tab</a>
                     </div>
-                </div>
-                <div class="settings">
-                    <h2>settings</h2>
-                    <p class="todo">// TODO: More features and customizability</p>
-                    <input type="file" name="muted_img" id="muted_img">
-                    <label for="muted_img">the image when silence</label><br>
-                    <input type="file" name="speak_img" id="speak_img">
-                    <label for="speak_img">the image when speaking</label><br>
-                    <input type="range" min="-60" max="0" value="-40" name="silence" id="silence_slider">
-                    <label for="silence">silence starts at <span id="silence_slider_db">...</span> dB</label>
                 </div>
             </div>
+            <div class="settings">
+                <h2>settings</h2>
+                <p class="todo">// TODO: More features and customizability</p>
+                <input type="file" name="muted_img" id="muted_img">
+                <label for="muted_img">the image when silence</label><br>
+                <input type="file" name="speak_img" id="speak_img">
+                <label for="speak_img">the image when speaking</label><br>
+                <input type="range" min="-60" max="0" value="-40" name="silence" id="silence_slider">
+                <label for="silence">silence starts at <span id="silence_slider_db">...</span> dB</label>
+            </div>
         </div>
-    </body>
-    <script src="scripts/microphone.js"></script>
-    <script src="scripts/settings.js"></script>
+    </div>
+</body>
+<script src="scripts/microphone.js"></script>
+<script src="scripts/settings.js"></script>
+
 </html>
