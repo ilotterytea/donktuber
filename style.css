@@ -1,0 +1,84 @@
+body, html, h1, h2, h3, p {
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.todo {
+    color: gainsboro;
+    font-style: italic;
+}
+
+.button {
+    padding: 6px;
+    color: black;
+    background-color: #f5f5f5;
+}
+
+.button:hover {
+    background-color: black;
+    color: white;
+    text-decoration: line-through;
+}
+
+.container {
+    width: 100%;
+    min-height: 100vh;
+
+    display: flex;
+    justify-content: center;
+}
+
+.wrapper {
+    padding-top: 12px;
+    width: 50%;
+}
+
+.brand {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.brand img {
+    width: 64px;
+    padding-right: 12px;
+}
+
+.preview-container {
+    margin: 32px 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.preview-container .control-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.preview-container .control {
+    display: flex;
+    flex-direction: row-reverse;
+    flex-grow: 1;
+}
+
+
+
+.preview {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: gainsboro;
+
+    padding: 16px 16px;
+    margin: 16px 0;
+}
+
+.preview img {
+    max-width: 100%;
+}

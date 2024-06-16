@@ -1,10 +1,43 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <link rel="stylesheet" href="style.css">
     </head>
     <body>
-        <h1>hello, world!</h1>
-        <p id="volume">0 dB</p>
+        <div class="container">
+            <div class="wrapper">
+                <div class="brand">
+                    <img src="assets/logo.gif" alt="">
+                    <h1>donktuber</h1>
+                </div>
+                <div class="preview-container">
+                    <h2>preview</h2>
+                    <div class="preview">
+                        <h1>
+                            <img src="#" alt="no image" id="preview">
+                        </h1>
+                    </div>
+                    <div class="control-container">
+                        <div>
+                            <p id="volume">0 dB</p>
+                        </div>
+                        <div class="control">
+                            <a href="/display" class="button">show in a separate tab</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="settings">
+                    <h2>settings</h2>
+                    <p class="todo">// TODO: More features and customizability</p>
+                    <input type="file" name="muted_img" id="muted_img">
+                    <label for="muted_img">the image when silence</label><br>
+                    <input type="file" name="speak_img" id="speak_img">
+                    <label for="speak_img">the image when speaking</label><br>
+                    <input type="range" min="-60" max="0" value="-40" name="silence" id="silence_slider">
+                    <label for="silence">silence starts at <span id="silence_slider_db">...</span> dB</label>
+                </div>
+            </div>
+        </div>
     </body>
     <script src="scripts/microphone.js"></script>
 </html>
