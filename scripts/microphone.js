@@ -4,22 +4,33 @@ if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
     navigator.mediaDevices.getUserMedia({ audio: true })
         .then(stream => {
             const audioContext = new (window.AudioContext || window.webkitAudioContext)();
-            const source = audioContext.createMediaStreamSource(stream);
+            const analyser = audioContext.createAnalyser();
+            const microphone = audioContext.createMediaStreamSource(stream);
+            const scriptProcessor = audioContext.createScriptProcessor(2048, 1, 1);
 
-            audioContext.audioWorklet.addModule("scripts/volume_processor.js")
-                .then(() => {
-                    const volumeNode = new AudioWorkletNode(audioContext, "volume_processor");
-                    source.connect(volumeNode).connect(audioContext.destination);
+            analyser.smoothingTimeConstant = 0.8;
+            analyser.fftSize = 1024;
 
-                    volumeNode.port.onmessage = (event) => {
-                        const volume = event.data;
-                        const db = 20 * Math.log10(volume);
+            microphone.connect(analyser);
+            analyser.connect(scriptProcessor);
+            scriptProcessor.connect(audioContext.destination);
 
-                        volumeHtml.innerHTML = `${db.toFixed(2)} dB`;
-                    };
-                }).catch((err) => {
-                    console.log(err);
-                })
+            scriptProcessor.onaudioprocess = function () {
+                const array = new Uint8Array(analyser.frequencyBinCount);
+                analyser.getByteFrequencyData(array);
+                let values = 0;
+
+                for (let i = 0; i < array.length; i++) {
+                    values += array[i];
+                }
+
+                const average = values / array.length;
+                const volume = Math.round(average);
+
+                const decibels = 20 * Math.log10(volume / 255);
+                
+                volumeHtml.innerText = `${decibels.toFixed(2)} dB`;
+            };
         })
         .catch(err => {
             console.error('The following getUserMedia error occurred: ' + err);
