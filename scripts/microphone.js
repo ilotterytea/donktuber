@@ -1,5 +1,6 @@
 if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
     const volumeHtml = document.getElementById("volume");
+    const previewHtml = document.getElementById("preview");
 
     navigator.mediaDevices.getUserMedia({ audio: true })
         .then(stream => {
@@ -30,6 +31,18 @@ if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
                 const decibels = 20 * Math.log10(volume / 255);
                 
                 volumeHtml.innerText = `${decibels.toFixed(2)} dB`;
+
+                const muted = localStorage.getItem("muted_img");
+                const speak = localStorage.getItem("speak_img");
+                const silence_db = localStorage.getItem("silence_db");
+
+                if (muted && previewHtml.src != muted && decibels <= silence_db) {
+                    previewHtml.src = muted;
+                }
+
+                if (speak && previewHtml.src != speak && decibels > silence_db) {
+                    previewHtml.src = speak;
+                }
             };
         })
         .catch(err => {
